@@ -34,13 +34,13 @@ class JobSeeker(models.Model):
     jobSeekerContactNo = models.IntegerField()
     applyJob = models.ManyToManyField(JobPost, related_name = "applyJob")
 
-
     def valid_job_seeker(self):
         return (self.jobSeekerName == self.jobSeekerAddress)
 
     def valid_job_contact(self):
         return (self.jobSeekerContactNo == self.jobSeekerName)
 
+    
     
 class Feedback(models.Model):
     title = models.CharField(max_length=60)
