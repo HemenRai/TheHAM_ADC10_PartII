@@ -11,7 +11,11 @@ class Company(models.Model):
     def __str__(self):
         return f"{self.companyName} is located at {self.companyAddress} and phone number is {self.companyContactNo}"
 
-    
+    def valid_company_name(self):
+        return (self.companyName != self.companyAddress)
+
+    def valid_company(self):
+        return (self.companyName == self.companyContactNo)
 
 class JobPost(models.Model):
     jobName = models.CharField(max_length=60)
@@ -20,8 +24,9 @@ class JobPost(models.Model):
     deadline = models.DateField()
     jobPost = models.FileField()
     jobProvider = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
-    
-    
+
+    def valid_job_name(self):
+        return (self.jobName != self.jobType)
     
 class JobSeeker(models.Model):
     jobSeekerName= models.CharField(max_length=60)
@@ -29,6 +34,12 @@ class JobSeeker(models.Model):
     jobSeekerContactNo = models.IntegerField()
     applyJob = models.ManyToManyField(JobPost, related_name = "applyJob")
 
+
+    def valid_job_seeker(self):
+        return (self.jobSeekerName == self.jobSeekerAddress)
+
+    def valid_job_contact(self):
+        return (self.jobSeekerContactNo == self.jobSeekerName)
 
     
 class Feedback(models.Model):
