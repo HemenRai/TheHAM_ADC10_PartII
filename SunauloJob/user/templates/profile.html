@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/jquery.slim.min.js"></script>
+    <script src="/static/popper.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome page</title>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+     <div class="container">
+        <h2>Profile</h2>
+        <div class="card" style="width:400px">
+          <div class="card-body">
+            <h4 class="card-title">{{user}}</h4>
+            <a href="/jobapp/logout/" class="btn btn-primary">Log out</a>
+          </div>
+        </div>
+        <br>
+    {% else %}
+        Unauthorized
+    {% endif %}
+    
+</body>
+</html>
