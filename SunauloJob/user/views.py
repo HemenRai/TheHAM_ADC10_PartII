@@ -19,9 +19,7 @@ def view_signup_user(request):
         user.save()    
         return HttpResponse("Registration Successful")
 
-def logout_user(request):
-    logout(request)  
-    return redirect ("/user/login")
+
 
 # Create your views here.
 def view_login_user(request):
@@ -37,9 +35,15 @@ def view_login_user(request):
         else:
             return HttpResponse("Authentication Failed")
 
+def logout_user(request):
+    logout(request)  
+    return redirect ("/user/login")
+
 
 def user_profile(request):
     if request.user.is_authenticated:
         return render(request,"profile.html")
     else:
         return redirect("/user/login")
+
+
