@@ -23,5 +23,3 @@ class ModelTestCase(TestCase):
     def test_valid_job_name(self):
         jobPost1 = JobPost.objects.create(jobName="Web designer", jobType="Full time")
         self.assertTrue(jobPost1.valid_job_name())
-
-    
