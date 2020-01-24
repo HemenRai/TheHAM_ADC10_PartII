@@ -56,7 +56,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'user/templates'
+            'user/templates',
+            'SunauloJob/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
