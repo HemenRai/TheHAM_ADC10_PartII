@@ -26,7 +26,9 @@ urlpatterns = [
 
 urlpatterns += [
     path('user/',include('user.urls')),
-    path('postjob/',include('postjob.urls'))
+    path('postjob/',include('postjob.urls')),
+    path('restapi/',include('restapi.urls'))
+
 ]
 
 
