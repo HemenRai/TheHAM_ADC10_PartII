@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<script src="/static/javascript/bootstrap.min.js"></script>
+<script src="/static/javascript/jquery.slim.min.js"></script>
+<script src="/static/javascript/popper.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Job List</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Job List</h2>
+        <div class="container">
+        <form method="POST" action="search" class="needs-validation" novalidate>
+          {% csrf_token %}
+          <input class="form-control col-sm-12" type="search" placeholder="Search" name="search" required>
+          <div class="valid-feedback">Valid</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+          <button class="btn btn-primary col-sm-12" type="submit">Search</button>
+        </form>
+        </div><br>
+        {% for post in posts %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-uppercase" class="text-uppercase">{{post.title}}</h5>
+            <h8 class="card-title text-capitalize">Category: {{post.category}}</h8>
+            <h8 class="card-title text-capitalize">Type: {{post.job_type}}</h8>
+            <h8 class="card-title text-capitalize">Salary: {{post.salary}}</h8><br>
+            <h8 class="card-title">Description:</h8>
+            <p class="card-text">{{post.description}}</p>
+            <a href="{{post.file.url}}"  class="card-link">{{post.file}}</a><br>
+            <a href="data/edit/{{post.id}}" class="card-link">Edit</a>
+            <a href="data/delete/{{post.id}}" class="card-link">Delete</a>
+          </div>
+        </div>
+        {% empty %}
+          There are no job posts.
+        {% endfor %}
+      </div>
+
+      <script src="/static/javascript/validatepostjob.js"></script>
+</body>
+</html>
