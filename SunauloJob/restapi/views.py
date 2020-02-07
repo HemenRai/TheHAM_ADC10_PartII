@@ -1,6 +1,6 @@
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from jobapp.models import Company
+from user.models import Company
 import json
 
 # Create your views here.
