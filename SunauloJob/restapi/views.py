@@ -63,3 +63,19 @@ def view_getByID(request,ID):
         return JsonResponse({
         "message":" Other htpp verbs Testing"
         })
+
+@csrf_exempt
+def get_company_pagination(request, pagenumber, size):
+    if request.method == "GET":
+        object_from = (pagenumber - 1) * size
+        object_to = pagenumber * size
+        companies = Company.objects.filter().values("companyName", "companyAddress", "companyContactNo")[object_from:object_to]
+        list_of_companies = list(companies)
+        dictionary_name = {
+            "companies": list_of_companies
+        }
+        return JsonResponse({
+            "company" : list_of_companies
+        })
+    else:
+        return HttpResponse("Other http verbs Testing")
