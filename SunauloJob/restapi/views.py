@@ -32,3 +32,34 @@ def view_get_post_company(request):
         })
     else:
         return HttpResponse("Other Http verbs testing")
+
+@csrf_exempt
+def view_getByID(request,ID):
+    print("What's the request =>",request.method)
+    company = Company.objects.get(id = ID)
+    if request.method == "GET":    
+        print(type(company.companyName))
+        return JsonResponse({
+            "id":company.id,
+            "companyName":company.companyName,
+            "companyAddress":company.companyAddress,
+            "companyContactNo":company.companyContactNo
+        })
+    elif request.method == "PUT":
+        python_dictionary_object = json.loads(request.body)
+        company.companyName=python_dictionary_object['companyName']
+        company.companyAddress=python_dictionary_object['companyAddress']
+        company.companyContactNo=python_dictionary_object['companyContactNo']
+        company.save()
+        return JsonResponse({
+            "message" : "Post Updated Successfully"
+        })
+    elif request.method == "DELETE":
+        company.delete()
+        return JsonResponse({
+            "message" : "Deleted Successfully"
+        })
+    else:
+        return JsonResponse({
+        "message":" Other htpp verbs Testing"
+        })
