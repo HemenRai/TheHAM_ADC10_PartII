@@ -3,11 +3,15 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from django.core.files.storage import FileSystemStorage 
 from django.db.models import Q
+from django.contrib.auth import authenticate
 from .models import *
 
 # Create your views here.
 def post_job(request):
-    return render(request,'postform.html')
+    if request.user.is_authenticated:
+        return render(request,'postform.html')
+    else:
+        return redirect("/user/login")
 
 def save_posted_job(request):
     if request.method == "POST":
