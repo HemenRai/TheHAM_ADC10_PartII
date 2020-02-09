@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Upload Resume
+{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <h2 style="text-align: center;">Upload Resume</h2>
+    <form action="save" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+        <div class="form-group" name="resume">
+            <label>Upload Resume</label><br>
+            <input type="file" name="file" required>
+            <div class="valid-feedback">Valid</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary">Post</button>
+        </div>
+
+    </form>
+</div>
+{% endblock body %}
+

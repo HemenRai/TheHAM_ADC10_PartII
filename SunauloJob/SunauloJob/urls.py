@@ -18,16 +18,18 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.view_home)
+    path('',views.view_home),
+    path('search',search_data),
 ]
 
 urlpatterns += [
     path('user/',include('user.urls')),
     path('postjob/',include('postjob.urls')),
-    path('restapi/',include('restapi.urls'))
+    path('restapi/',include('restapi.urls')),
 
 ]
 

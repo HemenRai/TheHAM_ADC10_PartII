@@ -47,3 +47,9 @@ class Feedback(models.Model):
     comments = models.TextField()
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 
+
+
+
+class Resume(models.Model):
+    file = models.FileField()
+
