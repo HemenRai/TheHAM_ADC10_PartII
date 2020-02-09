@@ -21,5 +21,5 @@ class ModelTestCase(TestCase):
         self.assertFalse(jobSeeker.valid_job_contact())
 
     def test_valid_job_name(self):
-        jobPost1 = JobPost.objects.create(jobName="Web designer", jobType="Full time")
+        jobPost1 = JobPost.objects.create(jobName="Web designer", jobType="Full time", postedDate="2017-02-02", deadline="2017-03-03")
         self.assertTrue(jobPost1.valid_job_name())
