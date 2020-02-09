@@ -61,7 +61,6 @@ def delete_post(request, ID):
     
 
 def search_data(request):
-    search_term = ''
     search_term= request.POST['search']
     match = Post.objects.filter(Q(title__icontains=search_term) | Q(category__icontains=search_term) | Q(job_type__icontains=search_term))
     context_variable = {
