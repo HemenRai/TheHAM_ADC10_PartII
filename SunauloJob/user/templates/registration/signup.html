@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 style="text-align: center;">Sign Up </h2>
+        <h2 style="text-align: center; color: royalblue;">Sign Up </h2>
         <form method="POST">
           {% csrf_token %}
             <div class="form-group">
@@ -27,8 +27,12 @@
                 <input type="password" class="form-control" name="input_password" placeholder="Enter Password" required>
             </div>
             <br>
-                <button class="btn btn-primary">Register</button>
+                <button class="btn btn-primary">Sign up</button>
+                <div style="text-align: right;">
+                    <a href="/user/login">Log in</a>
+                </div>
             </div>
+            
         </form>
 
 <script src="/static/javascript/jquery.slim.min.js"></script>

@@ -5,19 +5,19 @@ Feedback
 {% endblock title %}
 {% block body %}
 <div class="container">
-    <h2 style="text-align: center;">Feedback</h2>
+    <h2 style="text-align: center; color: royalblue;">Feedback</h2>
     <form action="save" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
       {% csrf_token %}
         <div class="form-group">
             <label >Title</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter Job Title" required>
+            <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
             <div class="valid-feedback">Valid</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
         <div class="form-group">
-            <label></label>
-            <textarea rows="4" class="form-control" name="comments" placeholder="Enter Job Description" required></textarea>
+            <label>Feedback</label>
+            <textarea rows="4" class="form-control" name="comments" placeholder="Enter Any Feedback and Suggestions" required></textarea>
             <div class="valid-feedback">Valid</div>
             <div class="invalid-feedback">Please fill out this field.</div>
         </div>

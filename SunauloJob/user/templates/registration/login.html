@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 style="text-align: center;">Login</h2>
+        <h2 style="text-align: center; color: royalblue;">Login</h2>
         <form method="POST">
           {% csrf_token %}
             <div class="form-group">
@@ -22,10 +22,22 @@
                 <label>Password:</label>
                 <input type="password" class="form-control" name="input_password" placeholder="Enter Password" required>
             </div>
-            <br>
+
+            {% if messages %}
+                <ul class="messages" style="color: red;">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        
             <div>
                 <button class="btn btn-primary">Login</button>
+                <div style="text-align: right;">
+                    <a href="/user/signup">Sign up</a>
+                </div>
             </div>
+            
         </form>
 
     

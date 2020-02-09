@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 from django.core.files.storage import FileSystemStorage
+from django.contrib import messages
 from .models import *
 
 
@@ -34,7 +35,9 @@ def view_login_user(request):
             login(request,user,backend=None)
             return redirect('/')
         else:
+            messages.add_message(request, messages.ERROR, 'Invalid input. Please input valid information.')
             return redirect("/user/login")
+            
 
 def logout_user(request):
     logout(request)  
