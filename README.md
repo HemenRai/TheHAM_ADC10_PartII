@@ -5,4 +5,4 @@
 ### Team Members:
 - Hemen Rai
 - Ashim Adhikari
-- Manoh B.K. 
+- Manoj B.K. 
